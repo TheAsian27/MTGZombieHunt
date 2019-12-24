@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <vector>
 
-using namespace std;
+using std::vector;
 
 bool contains(vector<int> v, int i)
 {
