@@ -5,13 +5,9 @@
 
 using namespace std;
 
-bool contains(vector<int> v, int i) {
-	for (int num : v) {
-		if (num == i) {
-			return true;
-		}
-	}
-	return false;
+bool contains(vector<int> v, int i)
+{
+	return std::find(v.begin(), v.end(), i) != v.end();
 }
 
 void shuffle(int card[], int n)
