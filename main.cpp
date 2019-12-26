@@ -1,11 +1,11 @@
-#include <stdlib.h>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
 #include <algorithm>
 #include <vector>
 
 using std::vector;
 
-bool contains(vector<int> v, int i)
+bool contains(const vector<int>& v, int i)
 {
 	return std::find(v.begin(), v.end(), i) != v.end();
 }
@@ -13,15 +13,9 @@ bool contains(vector<int> v, int i)
 void shuffle(int card[], int n)
 {
 	// Initialize seed randomly 
-	srand(time(0));
+	std::srand(std::time(0));
 
-	for (int i = 0; i < n; i++)
-	{
-		// Random for remaining positions. 
-		int r = i + (rand() % (n - i));
-
-		swap(card[i], card[r]);
-	}
+	std::random_shuffle(card, card + n, [](int i) -> std::rand()%i);
 }
 
 int main() {
