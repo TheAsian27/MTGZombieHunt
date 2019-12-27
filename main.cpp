@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <ctime>
+#include <cstring>
 #include <algorithm>
 #include <vector>
 
@@ -22,9 +23,7 @@ int main() {
 	vector<int> dmg;
 	int deck[60];
 	int count = 0;
-	for (int i = 0; i < 60; i++) {
-		deck[i] = 0;
-	}
+	std::memset(deck, 0, sizeof(deck));
 	/*
 	0 = land
 	1 = treasure hunt
