@@ -1,40 +1,29 @@
-#include <stdlib.h>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
+#include <cstring>
 #include <algorithm>
 #include <vector>
 
-using namespace std;
+using std::vector;
 
-bool contains(vector<int> v, int i) {
-	for (int num : v) {
-		if (num == i) {
-			return true;
-		}
-	}
-	return false;
+bool contains(const vector<int>& v, int i)
+{
+	return std::find(v.begin(), v.end(), i) != v.end();
 }
 
 void shuffle(int card[], int n)
 {
 	// Initialize seed randomly 
-	srand(time(0));
+	std::srand(std::time(0));
 
-	for (int i = 0; i < n; i++)
-	{
-		// Random for remaining positions. 
-		int r = i + (rand() % (n - i));
-
-		swap(card[i], card[r]);
-	}
+	std::random_shuffle(card, card + n, [](int i) -> std::rand()%i);
 }
 
 int main() {
 	vector<int> dmg;
 	int deck[60];
 	int count = 0;
-	for (int i = 0; i < 60; i++) {
-		deck[i] = 0;
-	}
+	std::memset(deck, 0, sizeof(deck));
 	/*
 	0 = land
 	1 = treasure hunt
